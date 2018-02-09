@@ -66,7 +66,7 @@ map <S-tab> <esc>:tabprevious<CR>
 map <tab> <esc>:tabnext<CR>
 
 " Install plugins
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin('~/AppData/Local/nvim/plugged')
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
@@ -86,8 +86,7 @@ call plug#end()
 :nnoremap <Leader>w :Bdelete<CR>
 
 " Set Python paths
-let g:python3_host_prog = '/usr/bin/python3.5'
-let g:python_host_prog = '/usr/bin/python2.7'
+let g:python3_host_prog = 'C:/Program Files (x86)/Python36-32/python.exe'
 
 " Enable deoplete on startup
 let g:deoplete#enable_at_startup = 1
@@ -106,14 +105,14 @@ let g:riv_ignored_nmaps = "<Tab>, <S-Tab>"
 
 " Use one of my favorite color schemes if available
 syntax on
-try
-  let g:solarized_termtrans=1
-  set t_Co=16
-  set background=light
-  colorscheme solarized
-catch
-  silent! colorscheme desert
-endtry
+colors slate
+
+if has('gui_running')
+ set guifont=Fira\ Code:h14:cANSI:qDRAFT
+ set termguicolors
+ set winfixwidth
+ set winfixheight
+endif
 
 " Run Neomake for buffer opens/writes
 autocmd! BufWritePost,BufEnter * Neomake
