@@ -147,6 +147,7 @@ syntax on
 call togglebg#map("<F5>")
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+autocmd vimenter * NERDTree
 
 " Run Neomake for buffer opens/writes
 autocmd! BufWritePost,BufEnter * Neomake
