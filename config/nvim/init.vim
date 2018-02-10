@@ -127,7 +127,7 @@ let g:riv_ignored_nmaps = "<Tab>, <S-Tab>"
 
 " Configure Airline plugin
 let g:airline_theme = 'solarized'
-" let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 
 " Use one of my favorite color schemes if available
 syntax on
@@ -136,7 +136,7 @@ syntax on
 " if has('gui_running')
   set termguicolors
   set background=dark
-  set guifont=Fira\ Code:h14:cANSI:qDRAFT
+"   set guifont="Fira Code:h14:cANSI:qDRAFT"
   set winfixwidth
   set winfixheight
   colorscheme solarized
