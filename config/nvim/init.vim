@@ -70,17 +70,39 @@ call plug#begin('~/AppData/Local/nvim/plugged')
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
+
+" Trey's plugins: https://github.com/treyhunner/dotfiles
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'neomake/neomake', { 'on': 'Neomake' }
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'altercation/vim-colors-solarized'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'danro/rename.vim'
 Plug 'moll/vim-bbye'
 Plug 'Rykka/riv.vim'
+
+" Alina's Plugins
+Plug 'tmhedberg/SimpylFold'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'nvie/vim-flake8'
+Plug 'jnurmine/Zenburn'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-syntastic/syntastic'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'mattn/emmet-vim'
+Plug 'Valloric/YouCompleteMe'
+
+" Duplicates
+" Plug 'kien/ctrlp.vim'
+
+" Not working
+" Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 call plug#end()
 
 :nnoremap <Leader>w :Bdelete<CR>
@@ -103,16 +125,28 @@ let g:riv_ignored_maps = '<CR>, <KEnter>'
 let g:riv_ignored_imaps = "<Tab>, <S-Tab>"
 let g:riv_ignored_nmaps = "<Tab>, <S-Tab>"
 
+" Configure Airline plugin
+let g:airline_theme = 'solarized'
+" let g:airline_powerline_fonts = 1
+
 " Use one of my favorite color schemes if available
 syntax on
-colors slate
+" colors slate
 
-if has('gui_running')
- set guifont=Fira\ Code:h14:cANSI:qDRAFT
- set termguicolors
- set winfixwidth
- set winfixheight
-endif
+" if has('gui_running')
+  set termguicolors
+  set background=dark
+  set guifont=Fira\ Code:h14:cANSI:qDRAFT
+  set winfixwidth
+  set winfixheight
+  colorscheme solarized
+" else
+"   colorscheme Zenburn
+" endif
+
+call togglebg#map("<F5>")
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 " Run Neomake for buffer opens/writes
 autocmd! BufWritePost,BufEnter * Neomake
